@@ -42,11 +42,11 @@ public class RgbColor {
 	
 	public RgbColor(int red, int green, int blue, String name){
 		this(red, green, blue);
-		this.name = name;
+		setName(name);
 	}
 	
 	public RgbColor(){
-		this(red, green, blue);
+		this(255, 255, 255);
 		name = "Gray";
 	}
 
