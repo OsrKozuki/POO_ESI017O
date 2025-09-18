@@ -81,4 +81,22 @@ public class Rectangle {
 		this(lenght, lenght); // We are calling constructor "public Rectangle(double base, double height)"
 	}
 	
+	
+	// THis is calles methods overwriting
+	@Override 
+	public String toString() {
+		return String.format("(base=%.2f height=%.2f area=%.2f perimeter=%.2f)", base, height, area(), perimeter());
+	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(!(o instanceof Rectangle)) return false;
+		Rectangle r = (Rectangle) o;
+		return this.base == r.base && this.height == r.height;
+	}
+	
+	public Rectangle clone() {
+		return new Rectangle(this.base , this.height);
+	}
+	
 }

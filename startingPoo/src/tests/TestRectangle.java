@@ -1,4 +1,6 @@
 package tests;
+import javax.swing.JOptionPane;
+
 import shapes2d.Rectangle;
 
 public class TestRectangle {
@@ -59,5 +61,46 @@ public class TestRectangle {
 		Rectangle r7 = new Rectangle(0);
 		r7.print();
 		
+		/**/
+		System.out.println(r7);
+		JOptionPane.showMessageDialog(null, r7);
+		// Above and below is the same, .toString is being called automatically, this every time we print.
+		// .toString is inherited from class Object <<<<<<<<<<<<<<<<<<<<
+		System.out.println(r7.toString());
+		JOptionPane.showMessageDialog(null, r7.toString());
+		/**/
+		
+		System.out.println("r1 = " + r1);
+		System.out.println("r2 = " + r2);
+		System.out.println("r3 = " + r3);
+		System.out.println("r4 = " + r4);
+		System.out.println("r5 = " + r5);
+		System.out.println("r6 = " + r6);
+		System.out.println("r7 = " + r7);
+		
+		Rectangle [] rectangles = {r1, r2, r3, r4, r5, r6, r7};
+		for(int i = 0; i < rectangles.length; i++) {
+			System.out.printf("Rectangle %d: %s \n", i + 1, rectangles[i]);
+		}
+		
+		if(r5.equals(r6)) {
+			System.out.println("Los objetos comparados son iguales en texto");
+		}else {
+			System.out.println("Los objetos comparados son iguales en texto");
+		}
+		
+		String str = "Hola";
+		if(r5.equals(str)) {
+			System.out.println("Los objetos comparados son iguales en texto");
+		}else {
+			System.out.println("Los objetos comparados NO Y NO Y NO iguales en texto");
+		
+		}
+		
+		//Rectangle r8 = r1; // THERE IS NO COPY HERE, IT IS POINTING  TO THE SAME OBJECT AT THE END
+		Rectangle r8 = r1.clone(); 
+		r8.setHeight(2.5);
+		System.out.println("r1 = " + r1);
+		System.out.println("r8 = " + r8);
 	}
 }
