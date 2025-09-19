@@ -148,7 +148,7 @@ public class Date {
 		}else if(format == 2) {
 			returnString = this.day + " de " + this.monthName + " de " + this.year;
 		}else {
-			returnString = "Something went wrong";
+			returnString = "You wrote a wrong value";
 		}
 		return returnString;
 	}
