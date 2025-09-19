@@ -104,15 +104,67 @@ public class Date {
 		}
 	}
 	
+	//Getters
+	public String getMonthName() {
+		return this.monthName;
+	}
+
+	public int getDay() {
+		return this.day;
+	}
+
+	public int getMonth() {
+		return this.month;
+	}
+
+	public int getYear() {
+		return this.year;
+	}
+
+	public int getFormat() {
+		return this.format;
+	}
+	
 	// Constructors
-	public void Date(int year, int month, int day, int format) {
+	public Date(int year, int month, int day) {
 		setYear(year);
 		setMonth(month);
 		setDay(day);
+		this.format = 0;
+	}
+
+	public Date(int year, int month, int day, int format) {
+		this(year, month, day);
 		setFormat(format);
 	}
 	
-	public void Date()
+	// Functions
+	public String toString(int format) {
+		String returnString;
+		if(format == 0){
+			returnString = this.day + "/" + this.month + "/" + this.year;
+		}else if(format == 1) {
+			returnString = this.day + "/" + this.monthName.substring(0, 3) + "/" + this.year;
+		}else if(format == 2) {
+			returnString = this.day + " de " + this.monthName + " de " + this.year;
+		}else {
+			returnString = "Something went wrong";
+		}
+		return returnString;
+	}
 	
-
+	@Override
+	public boolean equals(Object o) {
+		if(!(o instanceof Date)) return false;
+		return true;
+	}
+	
+	public Date clone() {
+		return new Date(this.year, this.month, this.day, this.format);
+	}
+	
+	public Date next() {
+		return new Date(this.year,    ((this.month == 12 && this.day == 31) ? 1 : this.month+1), (this.day == 30 && (this.month == 4||this.month == 6||this.month == 9||this.month == 11) ? 1 : this.day +1), this.format);
+	}
 }
+
